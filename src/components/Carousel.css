@@ -1,0 +1,102 @@
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: #0e0e0e;
+  overflow: hidden;
+}
+
+.carousel-inner {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+.card-image-description {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 30px;
+  color: white;
+}
+
+.card-image-description h1 {
+  color: #7147bc;
+}
+.card-image-description p {
+  padding: 0 50px;
+}
+
+.card {
+  display: flex;
+  text-align: center;
+  flex-direction: row;
+  background-color: #0e0e0e;
+}
+
+.carousel-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.carousel-item {
+  flex: 0 0 100%;
+}
+
+.carousel-item img {
+  width: 250px;
+  height: auto;
+  filter: drop-shadow(2px 2px 4px rgb(0, 0, 0));
+  border-radius: 25px;
+  object-fit: cover;
+  margin-left: 40px;
+  /* border-left: 1px solid #7147bc; */
+  /* border-right: 1px solid #7147bc; */
+  padding: 15px;
+}
+
+.btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.btn-prev {
+  left: 10px;
+}
+
+.btn-next {
+  right: 10px;
+}
+
+.btn svg {
+  fill: #333;
+  width: 20px;
+  height: 20px;
+}
+
+.btn:hover svg {
+  fill: #666;
+}
+
+@media (max-width: 450px) {
+  .card {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0e0e0e;
+  }
+  .carousel {
+    height: 100%;
+  }
+  .carousel-item img {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,150 @@
+.card {
+  display: flex;
+}
+.card-image {
+  width: 100%;
+}
+
+.share-card {
+  display: flex;
+  max-width: 900px;
+  flex-direction: column;
+  background-color: black;
+  padding: 10px;
+  margin-left: 10px;
+  border-radius: 15px;
+}
+.text-part {
+  display: flex;
+  color: white;
+}
+.text-part p {
+  font-size: 13px;
+}
+.icon-part {
+  display: flex;
+  line-height: 18px;
+}
+.icon-part span {
+  color: white;
+  margin-right: 5px;
+}
+.icon-part button {
+  border: none;
+  padding: 0 25px;
+  font-size: 13px;
+  height: 33px;
+  margin-right: 8px;
+  border-radius: 5px;
+}
+.facebook-btn {
+  background-color: #4267b2;
+  color: white;
+  font-size: 14px;
+}
+.x-btn {
+  background-color: #000000;
+  color: white;
+}
+.massenger-btn {
+  background-color: #448aff;
+  color: white;
+}
+.reddit-btn {
+  background-color: #ff4500;
+  color: white;
+}
+.whatsapp-btn {
+  background-color: #25d366;
+  color: white;
+}
+.telegram-btn {
+  background-color: #0088cc;
+  color: white;
+}
+.recently-updated {
+  display: flex;
+  order: 1;
+  justify-content: space-around;
+  margin-right: auto;
+  color: #dddddd;
+  margin-top: 20px;
+  max-width: 900px;
+  align-items: end;
+}
+.genre {
+  display: flex;
+  margin-left: auto;
+  justify-content: end;
+}
+.genre button {
+  padding: 0 10px;
+  border: none;
+  font-size: 15px;
+  background-color: transparent;
+  color: #666663;
+  font-weight: bold;
+  transition: color 0.25s ease-in-out;
+  transition: transform 0.2s ease;
+}
+.genre button:hover {
+  color: #dddddd;
+}
+.genre button:active {
+  transform: scale(1.2);
+}
+
+@media (max-width: 1214px) {
+  .icon-part button {
+    padding: 0 10px;
+  }
+  .genre a {
+    padding: 0 5px;
+  }
+  .twoSides {
+    display: none;
+  }
+}
+@media (max-width: 450px) {
+  .recently-updated {
+    flex-direction: column;
+    align-items: center;
+  }
+  .genre {
+    margin-left: 0;
+    align-items: center;
+  }
+}
+
+.recently-updated h3 {
+  margin-left: 10px;
+}
+.both-section {
+  display: flex;
+  justify-content: space-around;
+}
+.twoSides {
+  order: 2;
+}
+.twoSides h3 {
+  color: #dddddd;
+}
+.twoSides-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.twoSides-button {
+  background-color: #1c1c1c;
+  display: flex;
+  border-radius: 5px;
+}
+.twoSides-button button {
+  border: none;
+  background-color: #1c1c1c;
+  color: white;
+  padding: 0 10px;
+  height: 25px;
+  font-size: 10px;
+  border-radius: 5px;
+}
