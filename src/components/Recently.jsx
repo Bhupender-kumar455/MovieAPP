@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import clip from "../assets/background.mp4";
 
 import "./Recently.css";
-const Recently = ({ loading, data }) => {
+const Recently = ({ loading, data = "loading" }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const totalPages = Math.ceil(data.length / itemsPerPage);

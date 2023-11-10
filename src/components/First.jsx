@@ -15,7 +15,6 @@ import {
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import Recently from "./Recently";
 import Rightbar from "./Rightbar";
-import Onclick from "./Onclick";
 function First() {
   const isMobile = useMediaQuery({ maxWidth: 769 });
   const [real, setReal] = useState([]);
@@ -24,6 +23,8 @@ function First() {
   const [isLoading, setIsLoading] = useState(true);
   const [third, setThird] = useState();
   const [send, setSend] = useState();
+
+  const [clicked, setClicked] = useState(null);
   useEffect(() => {
     fetchFromAPI(`shows`).then((data) => {
       let first = data.data;
@@ -37,9 +38,12 @@ function First() {
       setIsLoading(false);
     });
   }, []);
-  const filterData = real.filter((item) => item.genres.includes(send));
+  const filterData = send
+    ? real.filter((item) => item.genres.includes(send))
+    : real.slice(20, 50);
   const handleClick = (value) => {
     setSend(value);
+    setClicked(value);
   };
   return (
     <div style={{ backgroundColor: "#0e0e0e" }}>
@@ -105,18 +109,49 @@ function First() {
           <div className="recently-updated">
             <h3>Recently updated</h3>
             <div className="genre">
-              <button onClick={() => handleClick("Action")}>Action</button>
-              <button onClick={() => handleClick("Drama")}>Drama</button>
-              <button onClick={() => handleClick("Comedy")}>Comedy</button>
-              <button onClick={() => handleClick("Horror")}>Horror</button>
-              <button onClick={() => handleClick("Romance")}>Romance</button>
+              <button
+                style={{
+                  textDecoration: clicked === "Action" ? "underline" : "none",
+                }}
+                onClick={() => handleClick("Action")}
+              >
+                Action
+              </button>
+              <button
+                style={{
+                  textDecoration: clicked === "Drama" ? "underline" : "none",
+                }}
+                onClick={() => handleClick("Drama")}
+              >
+                Drama
+              </button>
+              <button
+                style={{
+                  textDecoration: clicked === "Comedy" ? "underline" : "none",
+                }}
+                onClick={() => handleClick("Comedy")}
+              >
+                Comedy
+              </button>
+              <button
+                style={{
+                  textDecoration: clicked === "Horror" ? "underline" : "none",
+                }}
+                onClick={() => handleClick("Horror")}
+              >
+                Horror
+              </button>
+              <button
+                style={{
+                  textDecoration: clicked === "Romance" ? "underline" : "none",
+                }}
+                onClick={() => handleClick("Romance")}
+              >
+                Romance
+              </button>
             </div>
           </div>
-          <Recently
-            data={filterData}
-            default={secondFifty}
-            loading={isLoading}
-          />
+          <Recently data={filterData} default={recent} loading={isLoading} />
         </div>
       </div>
     </div>
