@@ -23,7 +23,7 @@ function First() {
   const [recent, setRecent] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [third, setThird] = useState();
-  const [send, setSend] = useState([]);
+  const [send, setSend] = useState();
   useEffect(() => {
     fetchFromAPI(`shows`).then((data) => {
       let first = data.data;
@@ -37,14 +37,10 @@ function First() {
       setIsLoading(false);
     });
   }, []);
-
+  const filterData = real.filter((item) => item.genres.includes(send));
   const handleClick = (value) => {
-    console.log(value);
-    const filteredMovies = real.filter((item) =>
-      setSend(item.genres === value)
-    );
+    setSend(value);
   };
-  console.log(send);
   return (
     <div style={{ backgroundColor: "#0e0e0e" }}>
       {isLoading ? <p>Loading...</p> : <Carousel data={data} />}
@@ -109,14 +105,18 @@ function First() {
           <div className="recently-updated">
             <h3>Recently updated</h3>
             <div className="genre">
-              <button onClick={() => handleClick("action")}>Action</button>
-              <button onClick={() => handleClick("drama")}>Drama</button>
-              <button onClick={() => handleClick("comedy")}>Comedy</button>
-              <button onClick={() => handleClick("horror")}>Horror</button>
-              <button onClick={() => handleClick("romance")}>Romance</button>
+              <button onClick={() => handleClick("Action")}>Action</button>
+              <button onClick={() => handleClick("Drama")}>Drama</button>
+              <button onClick={() => handleClick("Comedy")}>Comedy</button>
+              <button onClick={() => handleClick("Horror")}>Horror</button>
+              <button onClick={() => handleClick("Romance")}>Romance</button>
             </div>
           </div>
-          <Recently data={recent} loading={isLoading} />
+          <Recently
+            data={filterData}
+            default={secondFifty}
+            loading={isLoading}
+          />
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import clip from "../assets/background.mp4";
 
 import "./Recently.css";
-const Recently = ({ data, loading }) => {
+const Recently = ({ loading, data }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 10;
   const totalPages = Math.ceil(data.length / itemsPerPage);
@@ -17,11 +17,7 @@ const Recently = ({ data, loading }) => {
 
     return data.slice(startIndex, endIndex).map((item) => (
       <div key={item.id} className="movie">
-        {loading ? (
-          <p>Loading</p>
-        ) : (
-          <img className="movie-image" src={item.image.medium} />
-        )}
+        {<img className="movie-image" src={item.image.medium} />}
         <div className="movie-detail">
           <a href={item.url}>{item.name}</a>
         </div>
@@ -50,7 +46,9 @@ const Recently = ({ data, loading }) => {
 
   return (
     <div className="recently-parent">
-      <div className="movie-parent">{renderItems()}</div>
+      <div className="movie-parent">
+        {loading ? <p>Loading</p> : renderItems()}
+      </div>
       <div className="pagination">{renderPagination()}</div>
       <h3
         style={{
