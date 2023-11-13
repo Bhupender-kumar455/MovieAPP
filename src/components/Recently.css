@@ -16,7 +16,7 @@
 .movie-parent {
   display: grid;
   margin: 0 10px;
-  height: 600px;
+  height: 550px;
   margin-top: 20px;
   max-width: 958px;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
