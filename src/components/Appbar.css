@@ -7,12 +7,82 @@
   font-weight: bold;
   font-size: 25px;
 }
+.inputBox {
+  display: flex;
+  background-color: #171717;
+  align-items: center;
+  padding-left: 10px;
+  border-radius: 10px;
+}
+.input:focus,
+.input:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.inputBox .input {
+  background-color: transparent;
+  border: none;
+  border-top-right-radius: 10px;
+  color: #888181;
+}
+.inputBox .input::placeholder {
+  color: #aaaaaa;
+}
+
 .laptop-text,
 .mobile-text {
   margin: 0;
   padding: 0;
 }
+.search-card {
+  display: flex;
+  height: 110px;
+  padding-left: 10px;
+  align-items: center;
+  background-color: #1c1c1c;
+  backdrop-filter: blur(10px);
+}
+.search-card .text {
+  width: 30%;
+  height: auto;
+  text-align: left;
+  text-wrap: nowrap;
+  align-items: center;
+}
+.text .movieName {
+  text-decoration: none;
+}
+@media (max-width: 486px) {
+  .search-card .text {
+    flex-direction: column;
+  }
+}
 
+.search-card img {
+  width: 60px;
+  border-radius: 5px;
+  height: 90px;
+}
+.search-feed {
+  position: absolute;
+  top: 50px;
+  z-index: 999;
+  max-height: 300px;
+  width: 100%;
+  overflow-y: scroll;
+}
+.search-feed p {
+  color: white;
+}
+.inputBox {
+  position: relative;
+}
+.inputBox:focus {
+  .search-feed {
+    display: block;
+  }
+}
 .inputBox .search-btn {
   background-color: #7046ba;
   font-weight: bold;
