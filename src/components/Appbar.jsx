@@ -1,15 +1,37 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 import "./Appbar.css";
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faSearchengin } from "@fortawesome/free-brands-svg-icons";
 function Appbar() {
   const [input, setInput] = useState("");
   const [result, setResult] = useState([]);
+
+  const fetchData = (value) => {
+    fetch("https://api.tvmaze.com/shows")
+      .then((response) => response.json())
+      .then((json) => {
+        const result = json.filter((item) => {
+          return (
+            value &&
+            item &&
+            item.name &&
+            item.name.toLowerCase().includes(value)
+          );
+        });
+        setResult(result);
+      });
+  };
+
+  function handleChange(value) {
+    setInput(value);
+    fetchData(value);
+  }
 
   return (
     <Navbar expand="lg" className="Navbar">
@@ -23,20 +45,55 @@ function Appbar() {
             Picture<span>Verse</span>
           </p>
         </Navbar.Brand>
+
         <InputGroup className="inputBox">
+          <FontAwesomeIcon
+            style={{ color: "#888181", fontSize: "17px" }}
+            icon={faSearchengin}
+          />
           <Form.Control
-            placeholder="Search.. "
+            className="input"
+            placeholder="Search Movies..."
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
+            value={input}
+            onChange={(e) => handleChange(e.target.value)}
           />
-          <Button
-            className="search-btn"
-            style={{ top: "21px" }}
-            variant="outline-secondary"
-            id="button-addon2"
-          >
-            Go!
-          </Button>
+          <div className="search-feed">
+            {result.map((item, index) => {
+              return (
+                <div className="search-card" key={index}>
+                  <img src={item.image.medium} alt="logo" />
+                  <div className="text">
+                    <a
+                      href={item.url}
+                      className="movieName"
+                      style={{
+                        color: "white",
+                        marginLeft: "10px",
+                        width: "100%",
+                      }}
+                    >
+                      {item.name}
+                    </a>
+                    <h6 style={{ color: "#dddddd", marginLeft: "10px" }}>
+                      <FontAwesomeIcon
+                        style={{ fontSize: "12px", marginRight: "5px" }}
+                        icon={faStar}
+                      />
+                      {item.rating.average}
+                    </h6>
+                    <h6 style={{ color: "#dddddd", marginLeft: "10px" }}>
+                      {item.type}
+                    </h6>
+                  </div>
+                  <h6 style={{ color: "#dddddd", marginLeft: "10px" }}>
+                    Date: {item.premiered}
+                  </h6>
+                </div>
+              );
+            })}
+          </div>
         </InputGroup>
 
         <Navbar.Toggle
