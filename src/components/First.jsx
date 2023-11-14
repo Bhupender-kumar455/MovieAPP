@@ -51,7 +51,7 @@ function First() {
       <div className="share-card">
         <div className="text-part">
           <p>
-            <FontAwesomeIcon icon={faInfoCircle} />
+            <FontAwesomeIcon style={{ padding: "0 5px" }} icon={faInfoCircle} />
             If you enjoy the website, please consider sharing with your
             friends.Thankyou!
           </p>

@@ -33,7 +33,7 @@ function Carousel({ data }) {
                   <p>
                     <strong>Genres:</strong> {item.genres}
                   </p>
-                  <p>{item.summary.slice(0, 400)}</p>
+                  <p className="summary">{item.summary.slice(0, 400)}</p>
                   <a
                     href={item.url}
                     style={{ textDecoration: "none", marginBottom: "20px" }}
