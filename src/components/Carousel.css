@@ -25,14 +25,19 @@
 .card-image-description p {
   padding: 0 50px;
 }
-
+.share-card {
+  margin-top: 1px;
+}
 .card {
   display: flex;
+  height: fit-content;
   text-align: center;
   flex-direction: row;
   background-color: #0e0e0e;
 }
-
+.card .summary {
+  width: fit-content;
+}
 .carousel-list {
   list-style: none;
   padding: 0;
